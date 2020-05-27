@@ -29,9 +29,13 @@ dependencies {
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
     implementation(Libraries.constraintLayout)
+    implementation(Libraries.coroutinesAnd)
+    implementation(Libraries.coroutinesCore)
 
     testImplementation (TestLibraries.junit4)
+    testImplementation (TestLibraries.coroutinesTest)
     androidTestImplementation (TestLibraries.testExt)
     androidTestImplementation (TestLibraries.espresso)
+    androidTestImplementation(TestLibraries.coroutinesTest)
 
 }
