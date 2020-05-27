@@ -16,6 +16,8 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField ("String", "RELEASE_URL", "\"https://release.com/\"")
+        buildConfigField ("String", "DEBUG_URL", "\"https://debug.com/\"")
     }
 
     buildTypes {

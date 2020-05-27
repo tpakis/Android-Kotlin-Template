@@ -3,6 +3,7 @@ plugins {
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kotlinter)
+    id(BuildPlugins.kapt)
 }
 android {
     compileSdkVersion(AndroidSdk.compileVersion)
@@ -30,6 +31,8 @@ dependencies {
     implementation(Libraries.appCompat)
     implementation(Libraries.ktxCore)
     implementation(Libraries.timber)
+    implementation(Libraries.dagger)
+    kapt(Libraries.daggerCompiler)
 
     testImplementation (TestLibraries.junit4)
     androidTestImplementation (TestLibraries.testExt)
