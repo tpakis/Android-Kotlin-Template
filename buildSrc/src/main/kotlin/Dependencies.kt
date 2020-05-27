@@ -10,6 +10,7 @@ object BuildPlugins {
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     const val androidApplication = "com.android.application"
+    const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
 
@@ -32,10 +33,13 @@ object Libraries {
         const val ktxLiveData = "2.2.0"
         const val ktxViewModel = "2.2.0"
         const val ktxNav = "2.3.0-beta01"
+        const val timber = "4.7.1"
+        const val leakCanary = "2.3"
     }
 
     const val kotlinStdLib     = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     const val appCompat        = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    const val processLifecycle = "androidx.lifecycle:lifecycle-process:${Versions.ktxLifecycle}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val ktxCore          = "androidx.core:core-ktx:${Versions.ktx}"
     const val ktxLifecycle     = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.ktxLifecycle}"
@@ -47,6 +51,8 @@ object Libraries {
     const val ktvNavFragment   = "androidx.navigation:navigation-fragment-ktx:${Versions.ktxNav}"
     const val coroutinesCore   = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val coroutinesAnd    = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
+    const val timber           = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val leakCanary       = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
 
 }
 
@@ -61,4 +67,8 @@ object TestLibraries {
     const val testExt          = "androidx.test.ext:junit:${Versions.testExt}"
     const val espresso         = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val coroutinesTest   = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+}
+
+object Modules {
+    const val core = ":core"
 }

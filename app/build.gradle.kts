@@ -24,6 +24,10 @@ android {
 
 }
 
+androidExtensions {
+    isExperimental = true
+}
+
 dependencies {
     implementation(Libraries.kotlinStdLib)
     implementation(Libraries.appCompat)
@@ -38,7 +42,12 @@ dependencies {
     implementation(Libraries.ktxNavUi)
     implementation(Libraries.ktxViewModel)
     implementation(Libraries.ktvNavFragment)
+    implementation(Libraries.processLifecycle)
+    implementation(Libraries.timber)
+    debugImplementation(Libraries.leakCanary)
 
+    implementation(project(Modules.core))
+    
     testImplementation (TestLibraries.junit4)
     testImplementation (TestLibraries.coroutinesTest)
     androidTestImplementation (TestLibraries.testExt)
