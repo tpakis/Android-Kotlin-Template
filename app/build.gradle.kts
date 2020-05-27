@@ -31,6 +31,13 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.coroutinesAnd)
     implementation(Libraries.coroutinesCore)
+    implementation(Libraries.ktxFragment)
+    implementation(Libraries.ktxLifecycle)
+    implementation(Libraries.ktxLiveData)
+    implementation(Libraries.ktxNavRuntime)
+    implementation(Libraries.ktxNavUi)
+    implementation(Libraries.ktxViewModel)
+    implementation(Libraries.ktvNavFragment)
 
     testImplementation (TestLibraries.junit4)
     testImplementation (TestLibraries.coroutinesTest)
