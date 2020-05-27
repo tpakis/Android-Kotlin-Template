@@ -1,3 +1,4 @@
+import org.gradle.api.artifacts.dsl.DependencyHandler
 
 const val kotlinVersion = "1.3.71"
 
@@ -5,6 +6,7 @@ object BuildPlugins {
 
     object Versions {
         const val buildToolsVersion = "3.6.3"
+        const val kotlinterVersion = "2.3.2"
     }
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
@@ -12,8 +14,10 @@ object BuildPlugins {
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
+    const val kotlinter = "org.jmailen.kotlinter"
+    const val kapt = "kotlin-kapt"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
-
+    const val kotlinterGradlePlugin = "org.jmailen.gradle:kotlinter-gradle:${Versions.kotlinterVersion}"
 }
 
 object AndroidSdk {
@@ -35,6 +39,7 @@ object Libraries {
         const val ktxNav = "2.3.0-beta01"
         const val timber = "4.7.1"
         const val leakCanary = "2.3"
+        const val daggerVersion = "2.27"
     }
 
     const val kotlinStdLib     = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -53,7 +58,8 @@ object Libraries {
     const val coroutinesAnd    = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
     const val timber           = "com.jakewharton.timber:timber:${Versions.timber}"
     const val leakCanary       = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
-
+    const val dagger           = "com.google.dagger:dagger:${Versions.daggerVersion}"
+    const val daggerCompiler   = "com.google.dagger:dagger-compiler:${Versions.daggerVersion}"
 }
 
 object TestLibraries {
@@ -71,4 +77,8 @@ object TestLibraries {
 
 object Modules {
     const val core = ":core"
+}
+
+fun DependencyHandler.kapt(source: String) {
+    add("kapt", source)
 }

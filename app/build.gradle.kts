@@ -1,7 +1,10 @@
+
 plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
+    id(BuildPlugins.kotlinter)
+    id(BuildPlugins.kapt)
 }
 android {
     compileSdkVersion(AndroidSdk.compileVersion)
@@ -22,6 +25,14 @@ android {
         }
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 androidExtensions {
@@ -44,6 +55,8 @@ dependencies {
     implementation(Libraries.ktvNavFragment)
     implementation(Libraries.processLifecycle)
     implementation(Libraries.timber)
+    implementation(Libraries.dagger)
+    kapt(Libraries.daggerCompiler)
     debugImplementation(Libraries.leakCanary)
 
     implementation(project(Modules.core))

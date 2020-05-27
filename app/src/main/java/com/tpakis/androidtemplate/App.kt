@@ -2,14 +2,22 @@ package com.tpakis.androidtemplate
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.ProcessLifecycleOwner
+import com.tpakis.androidtemplate.di.AppComponent
+import com.tpakis.androidtemplate.di.AppModule
+import com.tpakis.androidtemplate.di.DaggerAppComponent
 import com.tpakis.core.ApplicationLifecycleObserver
 import timber.log.Timber
 
 class App : Application(), LifecycleObserver {
-    val context: Context
-        get() = applicationContext
+
+    val component: AppComponent by lazy {
+        DaggerAppComponent
+            .builder()
+            .appModule(AppModule(this))
+            .build()
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -33,6 +41,8 @@ class App : Application(), LifecycleObserver {
                 })
         }
     }
-
-
+    companion object {
+        fun getComponent(context: Context) =
+            (context.applicationContext as? App)?.component
+    }
 }
