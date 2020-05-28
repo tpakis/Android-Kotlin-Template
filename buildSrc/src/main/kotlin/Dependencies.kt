@@ -14,6 +14,7 @@ object BuildPlugins {
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
+    const val baseAndroidPlugin = "com.tpakis.baseandroidplugin"
     const val kotlinter = "org.jmailen.kotlinter"
     const val kapt = "kotlin-kapt"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
