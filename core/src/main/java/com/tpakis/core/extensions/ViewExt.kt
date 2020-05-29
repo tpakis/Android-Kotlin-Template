@@ -29,7 +29,6 @@ fun View.getDimen(@DimenRes dimenRes: Int): Float = context.resources.getDimensi
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
     LayoutInflater.from(context).inflate(layoutRes, this, false)
 
-
 fun View.resolveColor(@ColorRes colorRes: Int) = context.resolveColor(colorRes)
 
 fun View.resolveDrawable(@DrawableRes drawableRes: Int) = context.resolveDrawable(drawableRes)

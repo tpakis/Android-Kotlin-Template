@@ -1,9 +1,4 @@
 /*
- * Copyright (c) 2020.
- * Created by Tsakiridis Thanos <thanasakis@gmail.com>
- */
-
-/*
  * Copied from this article: https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
  * Created by: Jose Alcérreca
  */
