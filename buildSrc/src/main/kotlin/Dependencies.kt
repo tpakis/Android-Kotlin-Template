@@ -45,6 +45,7 @@ object Libraries {
         const val timber = "4.7.1"
         const val leakCanary = "2.3"
         const val daggerVersion = "2.27"
+        const val material = "1.1.0"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -68,6 +69,7 @@ object Libraries {
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
     const val dagger = "com.google.dagger:dagger:${Versions.daggerVersion}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.daggerVersion}"
+    const val material = "com.google.android.material:material:${Versions.material}"
 }
 
 object TestLibraries {
