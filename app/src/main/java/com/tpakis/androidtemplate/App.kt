@@ -2,6 +2,7 @@ package com.tpakis.androidtemplate
 
 import android.app.Application
 import android.content.Context
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.tpakis.androidtemplate.di.AppComponent
@@ -18,6 +19,8 @@ class App : Application(), LifecycleObserver {
             .appModule(AppModule(this))
             .build()
     }
+
+    private var testAppComponent: AppComponent? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -41,8 +44,16 @@ class App : Application(), LifecycleObserver {
                 })
         }
     }
+
+    @VisibleForTesting
+    fun setTestAppComponent(testAppComponent: AppComponent) {
+        this.testAppComponent = testAppComponent
+    }
+
     companion object {
         fun getComponent(context: Context) =
-            (context.applicationContext as? App)?.component
+            (context.applicationContext as? App)?.let {
+                it.testAppComponent ?: it.component
+            }
     }
 }

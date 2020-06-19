@@ -9,16 +9,15 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule(
-    @get:Provides
-    @get:Singleton
-    val app: App
+open class AppModule(
+    private val applicationContext: Context
 ) {
 
-    val applicationContext: Context
-        @Provides
-        @Singleton
-        get() = app
+    @Provides
+    @Singleton
+    fun provideApplicationContext(): Context {
+        return applicationContext
+    }
 
     @Provides
     @ApiUrl

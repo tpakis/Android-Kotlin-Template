@@ -5,6 +5,7 @@ plugins {
     id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kotlinter)
     id(BuildPlugins.kapt)
+    id(BuildPlugins.safeNavArgs)
 }
 android {
     compileSdkVersion(AndroidSdk.compileVersion)
@@ -15,14 +16,15 @@ android {
         targetSdkVersion(AndroidSdk.targetVersion)
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField ("String", "RELEASE_URL", "\"https://release.com/\"")
-        buildConfigField ("String", "DEBUG_URL", "\"https://debug.com/\"")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField ("String", "RELEASE_URL", "\"https://travelers-api.getyourguide.com/\"")
+        // should be the debug url
+        buildConfigField ("String", "DEBUG_URL", "\"https://travelers-api.getyourguide.com/\"")
     }
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -34,6 +36,24 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        animationsDisabled = true
+        unitTests.apply {
+            isIncludeAndroidResources = true
+        }
+    }
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
+    sourceSets.getByName("androidTest") {
+        java.srcDir("src/androidTest/java")
+        java.srcDir("src/sharedTest/java")
+    }
+    sourceSets.getByName("test") {
+        java.srcDir("src/test/java")
+        java.srcDir("src/sharedTest/java")
     }
 }
 
@@ -58,15 +78,34 @@ dependencies {
     implementation(Libraries.processLifecycle)
     implementation(Libraries.timber)
     implementation(Libraries.dagger)
+    implementation(Libraries.stetho)
+    implementation(Libraries.stethoOkHttp)
+    implementation(Libraries.picasso)
+    implementation(Libraries.okhttp)
+    implementation(Libraries.picassoTransformations)
     kapt(Libraries.daggerCompiler)
     debugImplementation(Libraries.leakCanary)
 
     implementation(project(Modules.core))
-    
-    testImplementation (TestLibraries.junit4)
-    testImplementation (TestLibraries.coroutinesTest)
-    androidTestImplementation (TestLibraries.testExt)
-    androidTestImplementation (TestLibraries.espresso)
-    androidTestImplementation(TestLibraries.coroutinesTest)
+    implementation(project(Modules.content))
 
+    testImplementation(TestLibraries.junit4)
+    testImplementation(TestLibraries.testExt)
+    testImplementation(TestLibraries.coroutinesTest)
+    testImplementation(TestLibraries.archCoreTest)
+    testImplementation(TestLibraries.roboelectric)
+    testImplementation(TestLibraries.mockk)
+    testImplementation(TestLibraries.testCore)
+    androidTestImplementation(TestLibraries.mockkAndroid)
+    androidTestImplementation(TestLibraries.testExt)
+    androidTestImplementation(TestLibraries.espresso)
+    androidTestImplementation(TestLibraries.espressoContrib)
+    androidTestImplementation(TestLibraries.coroutinesTest)
+    androidTestImplementation(TestLibraries.mockWebServer)
+    androidTestImplementation(TestLibraries.mockito)
+    androidTestImplementation(TestLibraries.mockitoDexMaker)
+    // Testing code should not be included in the main code. Should be androidTestImplementation not implementation.
+    //  Once https://issuetracker.google.com/128612536 is fixed this can be fixed.
+    implementation(TestLibraries.fragmentTesting)
+    implementation(TestLibraries.testCore)
 }

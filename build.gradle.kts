@@ -12,8 +12,9 @@ buildscript {
         classpath (BuildPlugins.androidGradlePlugin)
         classpath (BuildPlugins.kotlinGradlePlugin)
         classpath (BuildPlugins.kotlinterGradlePlugin)
+        classpath (BuildPlugins.safeNavArgsGradlePlugin)
         // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle.kts files
+        // in the individual module build.gradle.kts.kts.kts files
     }
 }
 
