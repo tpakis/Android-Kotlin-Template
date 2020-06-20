@@ -14,8 +14,6 @@ import javax.inject.Singleton
 )
 
 interface AppComponent {
-    val app: App
-
     fun inject(app: App)
     fun inject(mainActivity: MainActivity)
 }
