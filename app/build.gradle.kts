@@ -17,9 +17,9 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField ("String", "RELEASE_URL", "\"https://travelers-api.getyourguide.com/\"")
+        buildConfigField ("String", "RELEASE_URL", "\"empty\"")
         // should be the debug url
-        buildConfigField ("String", "DEBUG_URL", "\"https://travelers-api.getyourguide.com/\"")
+        buildConfigField ("String", "DEBUG_URL", "\"empty\"")
     }
 
     buildTypes {
